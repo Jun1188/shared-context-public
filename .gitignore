@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env*
+*.local.json
+.agent-work/
+todo-queue/local/
+*.db
+*.sqlite*

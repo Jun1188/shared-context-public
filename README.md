@@ -1,2 +1,25 @@
-# shared-context-public
-Shared Context queue core: sanitized source, synthetic tests, no private histories or credentials.
+# Shared Context · Queue Core
+
+여러 작업자와 PC가 같은 작업 정의를 읽고, 소유권·진행 기록·인계를 충돌 없이 관리하는 Python 도구입니다. 개인 운영 저장소에서 재사용 가능한 큐 엔진만 분리한 소스 후보입니다.
+
+## 포함한 기능
+- MLFQ와 가중 vruntime 기반 협력형 작업 큐
+- 명시적인 작업 소유자, lease, heartbeat, 범위 claim
+- 작업 정의/완료 receipt와 인계 revision 검증
+- 중단된 완료 처리 복구, 동시 작업자 충돌 방지
+- 선택적 로컬 worker 연동. 기본 공개 예제에는 실행 권한이나 연결된 세션이 없습니다.
+
+## 빠른 확인
+Python 3.10 이상과 Git이 필요합니다. 외부 Python 패키지는 사용하지 않습니다.
+
+```sh
+python -B -m unittest discover -s tools -p 'test_todo*.py' -v
+```
+
+시험은 임시 디렉터리와 합성 데이터만 사용합니다. 공개 후보의 33개 시험을 Linux에서 통과했습니다. Windows 실기기 검증과 전체 원본 시스템 검증을 뜻하지 않습니다.
+
+## 공개 경계
+실제 업무 큐, 개인 메모리, 대화·로그, PC 이름, 계정 정보, 인증값, 자동 승인 설정, 전체 Git 이력을 포함하지 않습니다. 샘플은 별도로 작성해야 하며 운영 환경에 그대로 연결하지 마세요. 이 저장소는 전체 Shared Context 제품이나 Hub 설치본을 대체하지 않습니다.
+
+## 라이선스
+이 분리본의 전체 코드에 적용할 공개 라이선스는 아직 확정하지 않았습니다. 공개 열람을 넘어서는 이용 허락을 임의로 추정하지 마세요.
